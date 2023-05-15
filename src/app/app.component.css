@@ -76,9 +76,7 @@
   margin-bottom: 56px;
 }
 
-.button:hover{
-  background: linear-gradient(95.61deg, #f0a04f 0%, #eec963 100%);
-}
+
 .main-image{
   position: absolute;
   top: -123px;
@@ -218,7 +216,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
+}
+.order-form-input.error{
+  background: red;
 }
 .order-form-input input{
   padding: 20px 10px;
