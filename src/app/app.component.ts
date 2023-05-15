@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormBuilder, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  form = this.fb.group({
+    order: ['', Validators.required],
+    name: ['', Validators.required],
+    phone: ['', Validators.required],
+  })
+  constructor(private fb: FormBuilder) {
+
+  }
   scrollTo(target: HTMLElement) {
     target.scrollIntoView({ behavior: 'smooth' });
+  }
+  confirmOrder(){
+    if(this.form.valid){
+      alert('Спасибо за заказ! Мы свяжемся с вами в ближайшее время!')
+    }
   }
 }
