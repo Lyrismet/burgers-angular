@@ -36,3 +36,11 @@ body{
   cursor: pointer;
   outline: none;
 }
+.button:hover{
+  background: linear-gradient(95.61deg, #f0a04f 0%, #eec963 100%);
+}
+.button:disabled{
+  cursor: not-allowed;
+  color: gray;
+  background: #343434;
+}
