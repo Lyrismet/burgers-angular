@@ -11,7 +11,7 @@
           <li class="menu-item"><a (click)="scrollTo(order)">Оформление заказа</a></li>
         </ul>
       </nav>
-      <div class="currency" title="Изменить валюту" id="change-currency">$</div>
+      <div class="currency" title="Изменить валюту" id="change-currency" (click)="changeCurrency">{{currency}}</div>
     </div>
   </header>
   <section class="main-content">
@@ -58,18 +58,17 @@
   <div class="container">
     <h2 class="products-title common-title">Выберите свой бургер</h2>
     <div class="products-items">
-      <div class="products-item">
+      <div class="products-item" *ngFor="let product of productsData">
         <div class="products-item-image">
-          <img src="./assets/images/1.png" alt="burger">
+          <img src="./assets/images/{{product.image}}" alt="burger">
         </div>
-        <div class="products-item-title">Бургер чеддер & бекон</div>
-        <div class="products-item-text">Котлета из говядины криспи, булочка, томат, сыр Чеддер, грудинка, лук
-          красный, салат айсбер, майонез, кетчуп, сырный соус
+        <div class="products-item-title">{{product.title}}</div>
+        <div class="products-item-text">{{product.text}}
         </div>
         <div class="products-item-extra">
           <div class="products-item-info">
-            <div class="products-item-price" data-base-price="8">8 $</div>
-            <div class="products-item-weight">360 гp</div>
+            <div class="products-item-price">{{product.price}} $</div>
+            <div class="products-item-weight">{{product.weight}} гp</div>
           </div>
           <div class="products-item-action">
             <button class="button product-button" (click)="scrollTo(order)">
