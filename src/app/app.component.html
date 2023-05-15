@@ -72,7 +72,7 @@
             <div class="products-item-weight">360 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -98,7 +98,7 @@
             <div class="products-item-weight">390 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@
             <div class="products-item-weight">420 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -150,7 +150,7 @@
             <div class="products-item-weight">220 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -176,7 +176,7 @@
             <div class="products-item-weight">220 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -202,7 +202,7 @@
             <div class="products-item-weight">320 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -228,7 +228,7 @@
             <div class="products-item-weight">280 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -254,7 +254,7 @@
             <div class="products-item-weight">380 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -280,7 +280,7 @@
             <div class="products-item-weight">400 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -306,7 +306,7 @@
             <div class="products-item-weight">300 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -332,7 +332,7 @@
             <div class="products-item-weight">320 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -358,7 +358,7 @@
             <div class="products-item-weight">360 гp</div>
           </div>
           <div class="products-item-action">
-            <button class="button product-button">
+            <button class="button product-button" (click)="scrollTo(order)">
               <span>Заказать</span>
               <span><svg width="24" height="25" viewBox="0 0 24 25" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -381,17 +381,17 @@
       <div class="order-form-text">
         Заполните все данные и наш менеджер свяжется с вами для подтверждения заказа
       </div>
-      <div class="order-form-inputs">
-        <div class="order-form-input">
-          <input type="text" placeholder="Ваш заказ" id="burger">
+      <div class="order-form-inputs" [formGroup]="form">
+        <div class="order-form-input" [class]="{'error': form.get('order')?.invalid && (form.get('order')?.dirty || form.get('order')?.touched)}">
+          <input type="text" placeholder="Ваш заказ" id="burger" formControlName="order">
         </div>
-        <div class="order-form-input">
-          <input type="text" placeholder="Ваше имя" id="name">
+        <div class="order-form-input" [class]="{'error': form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)}">
+          <input type="text" placeholder="Ваше имя" id="name" formControlName="name">
         </div>
-        <div class="order-form-input">
-          <input type="text" placeholder="Ваш телефон" id="phone">
+        <div class="order-form-input" [class]="{'error': form.get('phone')?.invalid && (form.get('phone')?.dirty || form.get('phone')?.touched)}">
+          <input type="text" placeholder="Ваш телефон" id="phone" formControlName="phone">
         </div>
-        <button class="button" id="order-action">Оформить заказ</button>
+        <button class="button" id="order-action" (click)="confirmOrder()" [disabled]="!form.valid">Оформить заказ</button>
       </div>
     </div>
   </div>
