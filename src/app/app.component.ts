@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
+import {AppService} from "./app.service";
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,8 @@ export class AppComponent {
     phone: ['', Validators.required],
   });
 
-  productsData = [
-    {
+  productsData: any;
+    /*[{
       image: "1.png",
       title: "Бургер чеддер & бекон",
       text: "Котлета из говядины криспи, булочка, томат, сыр Чеддер, грудинка, лук красный, салат айсберг, майонез, кетчуп, сырный соус",
@@ -110,11 +111,14 @@ export class AppComponent {
       price: 9,
       basePrice: 9,
       weight: 360
-    }
-  ]
+    }]*/
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private appService: AppService) {
 
+  }
+
+  ngOnInit(){
+    this.appService.getData().subscribe(data => this.productsData = data);
   }
 
   scrollTo(target: HTMLElement, burger?: any) {
@@ -126,6 +130,18 @@ export class AppComponent {
 
   confirmOrder() {
     if (this.form.valid) {
+      this.appService.sendOrder(this.form.value)
+        .subscribe(
+          {
+            next:(response:any) => {
+              alert(response.message);
+              this.form.reset();
+            },
+            error:(response) => {
+              alert(response.error.message);
+            },
+          }
+        )
       alert('Спасибо за заказ! Мы свяжемся с вами в ближайшее время!');
       this.form.reset();
     }
