@@ -249,6 +249,8 @@
 .loader{
   top: 0;
   width: 100%;
+  height: 100%;
+  background: #191411;
   position: fixed;
   display: flex;
   align-items: center;
