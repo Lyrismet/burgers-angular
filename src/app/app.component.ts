@@ -9,6 +9,8 @@ import {AppService} from "./app.service";
 })
 export class AppComponent {
   currency = '$';
+  loaderShowed = true;
+  loader = true;
   form = this.fb.group({
     order: ['', Validators.required],
     name: ['', Validators.required],
