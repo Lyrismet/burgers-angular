@@ -120,6 +120,13 @@ export class AppComponent {
   }
 
   ngOnInit(){
+    setTimeout(() => {
+        this.loaderShowed = false;
+    }, 3000);
+    setTimeout(() => {
+        this.loader = false;
+    }, 4000);
+
     this.appService.getData().subscribe(data => this.productsData = data);
   }
 
