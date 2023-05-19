@@ -136,6 +136,10 @@
 }
 .products-item-image img {
   max-width: 100%;
+  transition: all .5s ease;
+}
+.products-item-image img:hover {
+  transform: scale(1.1);
 }
 .products-item-title {
   font-size: 24px;
@@ -263,6 +267,6 @@
   width: 300px;
   height: 300px;
 }
-.loader .showed{
+.loader.showed{
   opacity: 1;
 }
